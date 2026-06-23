@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة تطعيمات بنها - الدليل الصحي المتكامل</title>
+    <link rel="icon" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+        .hero-bg { background-color: #1e3a8a; border-radius: 0 0 2.5rem 2.5rem; }
+        .main-card { 
+            transition: all 0.3s ease; 
+            border-radius: 1.5rem; 
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+        }
+        .main-card:hover { transform: scale(1.02); box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1); }
+        .icon-box { border-radius: 1rem; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        .day-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
+        .unit-card { border-radius: 1.25rem; transition: all 0.2s ease; border: 1px solid #e2e8f0; }
+        .unit-card:hover { border-color: #3b82f6; background-color: #f0f7ff; }
+        .hidden-section { display: none; }
+        
+        .logo-container {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 8px;
+        }
+        .logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header Section -->
+    <header class="hero-bg text-white pt-8 pb-16 px-6 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="logo-container">
+                <img src="logo.png" alt="شعار الإدارة الصحية" class="logo-img" onerror="this.src='https://via.placeholder.com/70?text=Logo'">
+            </div>
+            <div class="mb-2">
+                <span class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold border border-white/20 tracking-wider">الإدارة الصحية ببنها - مديرية الشؤون الصحية بالقليوبية</span>
+            </div>
+            <h1 class="text-2xl font-black mb-1">منصة تطعيمات بنها</h1>
+            <p class="text-blue-200 font-semibold text-sm">التغطية الصحية الشاملة لأطفالنا</p>
+        </div>
+    </header>
+
+    <!-- Main Navigation Menu -->
+    <main class="max-w-2xl mx-auto px-4 -mt-8 mb-10">
+        <div class="space-y-4">
+            <div onclick="showSection('locationsSection')" class="main-card bg-white p-5 shadow-lg flex items-center gap-4">
+                <div class="icon-box bg-cyan-100 text-cyan-600 shadow-sm order-last">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <div class="flex-grow text-right">
+                    <h3 class="text-lg font-black text-slate-800">مواعيد الوحدات الصحية</h3>
+                    <p class="text-slate-400 font-bold text-xs">خريطة ومواعيد الـ 38 وحدة ببنها</p>
+                </div>
+                <div class="text-blue-400">←</div>
+            </div>
+
+            <div onclick="showSection('calculatorSection')" class="main-card bg-white p-5 shadow-lg flex items-center gap-4">
+                <div class="icon-box bg-blue-100 text-blue-600 shadow-sm order-last">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                </div>
+                <div class="flex-grow text-right">
+                    <h3 class="text-lg font-black text-slate-800">حساب التطعيمات</h3>
+                    <p class="text-slate-400 font-bold text-xs">احسب موعد جرعة طفلك القادمة</p>
+                </div>
+                <div class="text-blue-400">←</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div onclick="showSection('importanceSection')" class="main-card bg-white p-4 shadow-md text-center flex flex-col items-center">
+                    <div class="icon-box bg-green-50 text-green-600 mb-2 w-10 h-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-black text-slate-700 text-sm">أهمية التطعيم</h4>
+                </div>
+                <div onclick="showSection('guidelinesSection')" class="main-card bg-white p-4 shadow-md text-center flex flex-col items-center">
+                    <div class="icon-box bg-orange-50 text-orange-600 mb-2 w-10 h-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-black text-slate-700 text-sm">إرشادات هامة</h4>
+                </div>
+            </div>
+
+            <div onclick="showSection('aboutSection')" class="bg-blue-50/50 border border-dashed border-blue-200 rounded-2xl p-3 text-center cursor-pointer hover:bg-blue-100 transition-all">
+                <p class="text-blue-700 font-bold text-xs flex items-center justify-center gap-2">
+                    <span class="bg-blue-600 text-white w-5 h-5 rounded flex items-center justify-center text-[10px]">i</span>
+                    تعرف على الإدارة الصحية ببنها
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sections -->
+    <div id="locationsSection" class="hidden-section max-w-6xl mx-auto px-4 mb-20">
+        <div class="bg-white p-6 rounded-3xl shadow-xl border border-blue-50">
+            <div class="flex justify-between items-center mb-6">
+                <button onclick="hideAllSections()" class="text-blue-600 font-bold">رجوع ←</button>
+                <h2 class="text-xl font-black text-blue-900">مواعيد الوحدات</h2>
+            </div>
+            <div class="mb-6 space-y-4">
+                <input type="text" id="search" placeholder="🔍 ابحث باسم القرية أو الوحدة..." class="w-full p-4 rounded-xl border-2 border-slate-100 outline-none focus:border-blue-500 font-bold text-right shadow-sm">
+                <div class="flex flex-wrap justify-center gap-2" id="dayFilters">
+                    <button data-day="الكل" class="day-btn active px-3 py-1.5 rounded-lg border-2 border-slate-100 font-bold text-xs">الكل</button>
+                    <button data-day="السبت" class="day-btn px-3 py-1.5 rounded-lg border-2 border-slate-100 font-bold text-xs">السبت</button>
+                    <button data-day="الأحد" class="day-btn px-3 py-1.5 rounded-lg border-2 border-slate-100 font-bold text-xs">الأحد</button>
+                    <button data-day="الاثنين" class="day-btn px-3 py-1.5 rounded-lg border-2 border-slate-100 font-bold text-xs">الاثنين</button>
+                    <button data-day="الثلاثاء" class="day-btn px-3 py-1.5 rounded-lg border-2 border-slate-100 font-bold text-xs">الثلاثاء</button>
+                    <button data-day="الأربعاء" class="day-btn px-3 py-1.5 rounded-lg border-2 border-slate-100 font-bold text-xs">الأربعاء</button>
+                    <button data-day="الخميس" class="day-btn px-3 py-1.5 rounded-lg border-2 border-slate-100 font-bold text-xs">الخميس</button>
+                </div>
+            </div>
+            <div id="unitsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+    </div>
+
+    <div id="calculatorSection" class="hidden-section max-w-4xl mx-auto px-4 mb-10">
+        <div class="bg-white p-8 rounded-3xl shadow-xl border border-blue-50">
+            <div class="flex justify-between items-center mb-6">
+                <button onclick="hideAllSections()" class="text-blue-600 font-bold">إغلاق ×</button>
+                <h2 class="text-xl font-black text-blue-900">حساب التطعيمات</h2>
+            </div>
+            <p class="text-slate-500 mb-4 font-bold text-sm text-right">اختر عمر الطفل لعرض الجرعات المقررة:</p>
+            <select id="ageSelector" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-xl outline-none focus:border-blue-500 font-bold text-right">
+                <option value="">-- اختر عمر الطفل --</option>
+                <option value="birth">عند الميلاد (خلال 24 ساعة)</option>
+                <option value="2m">إتمام شهرين</option>
+                <option value="4m">إتمام 4 شهور</option>
+                <option value="6m">إتمام 6 شهور</option>
+                <option value="9m">إتمام 9 شهور</option>
+                <option value="12m">إتمام سنة</option>
+                <option value="18m">إتمام سنة ونصف</option>
+            </select>
+            <div id="results" class="mt-8 hidden text-right">
+                <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                    <h4 class="font-black text-blue-900 mb-4 text-center">الجرعات الواجب أخذها:</h4>
+                    <div id="vaccineList" class="flex flex-wrap gap-2 justify-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="importanceSection" class="hidden-section max-w-4xl mx-auto px-4 mb-10 text-right">
+         <div class="bg-white p-8 rounded-3xl shadow-xl">
+            <div class="flex justify-between items-center mb-6">
+                <button onclick="hideAllSections()" class="text-blue-600 font-bold">إغلاق ×</button>
+                <h2 class="text-xl font-black text-green-700">أهمية التطعيم</h2>
+            </div>
+            <div class="space-y-4 text-slate-600 font-bold">
+                <p>تعتبر التطعيمات الوسيلة الأكثر أماناً وفعالية لحماية الأطفال من الأمراض المعدية والخطيرة التي قد تسبب إعاقات أو مضاعفات دائمة.</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>بناء مناعة قوية ضد شلل الأطفال والسل.</li>
+                    <li>الوقاية من الالتهاب الكبدي الوبائي.</li>
+                    <li>حماية المجتمع من انتشار الأوبئة.</li>
+                </ul>
+            </div>
+         </div>
+    </div>
+
+    <div id="guidelinesSection" class="hidden-section max-w-4xl mx-auto px-4 mb-10 text-right">
+        <div class="bg-white p-8 rounded-3xl shadow-xl">
+            <div class="flex justify-between items-center mb-6">
+                <button onclick="hideAllSections()" class="text-blue-600 font-bold">إغلاق ×</button>
+                <h2 class="text-xl font-black text-orange-700">إرشادات هامة للوالدين</h2>
+            </div>
+            <div class="space-y-4 text-slate-600 font-bold">
+                <div class="p-4 bg-orange-50 rounded-xl border-r-4 border-orange-400">الالتزام بموعد الجلسة المخصص لكل وحدة ضروري لضمان توافر الطعوم.</div>
+                <div class="p-4 bg-blue-50 rounded-xl border-r-4 border-blue-400">يجب إحضار "كارت التطعيمات" وشهادة الميلاد في كل زيارة.</div>
+                <div class="p-4 bg-green-50 rounded-xl border-r-4 border-green-400">في حالة ارتفاع درجة الحرارة الشديد، يرجى استشارة الطبيب قبل التطعيم.</div>
+            </div>
+         </div>
+    </div>
+
+    <div id="aboutSection" class="hidden-section max-w-4xl mx-auto px-4 mb-10 text-right">
+        <div class="bg-white p-8 rounded-3xl shadow-xl">
+            <div class="flex justify-between items-center mb-8">
+                <button onclick="hideAllSections()" class="text-blue-600 font-bold">إغلاق ×</button>
+                <h2 class="text-xl font-black text-blue-900">من نحن</h2>
+            </div>
+            <div class="flex flex-col items-center mb-8">
+                <div class="logo-container">
+                    <img src="logo.png" alt="شعار الإدارة" class="logo-img" onerror="this.src='https://via.placeholder.com/70'">
+                </div>
+                <h3 class="text-lg font-black text-slate-800">إدارة بنها الصحية</h3>
+                <p class="text-slate-400 font-bold text-sm">مديرية الشؤون الصحية بالقليوبية</p>
+            </div>
+            <div class="prose prose-slate max-w-none font-bold text-slate-600 leading-relaxed text-center">
+                <p class="mb-4">
+                    نحن في الإدارة الصحية ببنها نسعى جاهدين لتوفير أفضل سبل الرعاية الصحية الوقائية لمواطني المدينة وقراها. 
+                </p>
+            </div>
+         </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="text-center py-8 opacity-60">
+        <p class="text-xs font-black text-slate-500 mb-1">الإدارة الصحية ببنها - مديرية الشؤون الصحية بالقليوبية</p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">مع تحيات فريق التطعيمات &copy; 2026</p>
+    </footer>
+
+    <script>
+        const vaccineData = {
+            birth: ["شلل الأطفال", "كبدي B", "درن"],
+            "2m": ["شلل الأطفال", "سولك", "خماسي 1"],
+            "4m": ["شلل الأطفال", "سولك", "خماسي 2"],
+            "6m": ["شلل الأطفال", "سولك", "خماسي 3"],
+            "9m": ["شلل الأطفال", "فيتامين أ"],
+            "12m": ["شلل الأطفال", "MMR"],
+            "18m": ["شلل الأطفال", "MMR 2", "ثلاثي", "فيتامين أ"]
+        };
+
+        const units = [
+            { name: "الرملة", address: "الرملة، بنها", map: "https://maps.app.goo.gl/1a5A5LCkrAUG4A3Z6", sessions: { "السبت": "صفرية / درن (2 و 4)", "الأحد": "كل الجرعات", "الثلاثاء": "صفرية / تيتانوس", "الأربعاء": "كل الجرعات" } },
+            { name: "الشموت", address: "الشموت، بنها", map: "https://maps.app.goo.gl/A4dhQNqPRb7rCv7YA", sessions: { "السبت": "صفرية - شهرين - 4 - 6 - 9", "الأحد": "حوامل", "الاثنين": "كل الجرعات", "الثلاثاء": "صفرية / درن", "الأربعاء": "صفرية - شهرين - 4 - 6 - 9" } },
+            { name: "بتمدة", address: "بتمدة، بنها", map: "https://maps.app.goo.gl/PDtj3gto4c1mvtAW6", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الاثنين": "حوامل", "الثلاثاء": "صفرية - شهرين - 4 - 6 - 9 - درن", "الأربعاء": "كل الجرعات" } },
+            { name: "بطا", address: "بطا، بنها", map: "https://maps.app.goo.gl/CQMWzzwpUukawkTb8", sessions: { "السبت": "صفرية / درن (1 و 3)", "الأحد": "صفرية - شهرين - 4 - 6 - 9", "الاثنين": "حوامل", "الثلاثاء": "صفرية", "الأربعاء": "كل الجرعات" } },
+            { name: "بقيرة", address: "بقيرة، بنها", map: "https://maps.app.goo.gl/76xPp34axcnQXdHL9", sessions: { "السبت": "صفرية", "الاثنين": "حوامل", "الثلاثاء": "كل الجرعات / درن (الأخير)" } },
+            { name: "بنها أول", address: "وسط البلد، بنها", map: "https://maps.app.goo.gl/hKED3NdPBCBwx9Wj7", sessions: { "السبت": "صفرية - شهرين - 4 - 6 - 9", "الثلاثاء": "صفرية / درن (الأخير)", "الأربعاء": "كل الجرعات" } },
+            { name: "بنها ثالث", address: "الشدية، بنها", map: "https://maps.app.goo.gl/YXQX1APk28Byo9mg7", sessions: { "السبت": "صفرية - شهرين - 4 - 6 - 9", "الاثنين": "9 شهور - سنة - سنة ونصف", "الثلاثاء": "9 شهور - درن", "الأربعاء": "صفرية - شهرين - 4 - 6 - 9" } },
+            { name: "بنها ثان", address: "بنها", map: "https://maps.app.goo.gl/iLNv1RB45aJr1DsV6", sessions: { "السبت": "صفرية", "الثلاثاء": "كل الجرعات / درن" } },
+            { name: "بنها خامس", address: "عزبة السوق", map: "https://maps.app.goo.gl/1orjffSPXf7tefSr9", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الثلاثاء": "صفرية / درن", "الأربعاء": "كل الجرعات" } },
+            { name: "بنها رابع", address: "التأمين الصحي", map: "https://maps.app.goo.gl/nMijmwQYaVVpqmws5", sessions: { "السبت": "صفرية - 9 شهور - سنة - سنة ونصف / درن", "الأحد": "صفرية - شهرين - 4 - 6 - 9", "الاثنين": "صفرية - شهرين - 4 - 6 - 9 / حوامل", "الثلاثاء": "9 شهور - سنة - سنة ونصف / درن", "الأربعاء": "كل الجرعات", "الخميس": "كل الجرعات" } },
+            { name: "جزيرة بلي", address: "جزيرة بلى", map: "https://maps.app.goo.gl/6wgsB1DUbe3r9Ts97", sessions: { "السبت": "كل الجرعات", "الأحد": "حوامل", "الثلاثاء": "كل الجرعات", "الأربعاء": "درن (1 و 3)" } },
+            { name: "جمجرة الجديدة", address: "كفر الأربعين", map: "https://maps.app.goo.gl/UxTZgrD4hos4e6YcA", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الاثنين": "صفرية", "الثلاثاء": "درن", "الأربعاء": "حوامل", "الخميس": "صفرية" } },
+            { name: "جمجرة القديمة", address: "جمجرة", map: "https://maps.app.goo.gl/ZQhS9Lx27FeFHXPXA", sessions: { "السبت": "درن", "الأحد": "حوامل", "الاثنين": "كل الجرعات", "الثلاثاء": "صفرية" } },
+            { name: "دجوي", address: "دجوي", map: "https://maps.app.goo.gl/695kW2KSP1vtBC3D9", sessions: { "السبت": "كل الجرعات + درن", "الأحد": "حوامل", "الاثنين": "صفرية", "الثلاثاء": "كل الجرعات", "الأربعاء": "صفرية", "الخميس": "صفرية" } },
+            { name: "دملو", address: "دملو", map: "https://maps.app.goo.gl/EkUBNu8rrSxxtsFB8", sessions: { "السبت": "صفرية / درن", "الاثنين": "كل الجرعات", "الثلاثاء": "صفرية", "الأربعاء": "حوامل" } },
+            { name: "ساحل دجوي", address: "ساحل دجوي", map: "https://maps.app.goo.gl/TWPWTaEEiwgpcS4u7", sessions: { "السبت": "درن", "الثلاثاء": "صفرية", "الأربعاء": "حوامل + كل الجرعات" } },
+            { name: "سندنهور", address: "سندنهور", map: "https://maps.app.goo.gl/d1o3nbUgtwi173RN9", sessions: { "السبت": "كل الجرعات", "الأحد": "حوامل", "الاثنين": "درن", "الثلاثاء": "كل الجرعات" } },
+            { name: "شبلنجة", address: "شبلنجة", map: "https://maps.app.goo.gl/rsumdDZBZXtcccpT7", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الاثنين": "حوامل", "الثلاثاء": "درن", "الأربعاء": "كل الجرعات" } },
+            { name: "طحلة", address: "طحلة", map: "https://maps.app.goo.gl/ySvbnZi4Lsq39Q529", sessions: { "السبت": "صفرية", "الأحد": "درن", "الاثنين": "حوامل", "الثلاثاء": "صفرية", "الأربعاء": "كل الجرعات" } },
+            { name: "عزبة رشيد", address: "مرصفا", map: "https://maps.app.goo.gl/s6k4QSxP472MVmC88", sessions: { "السبت": "كل الجرعات + درن", "الثلاثاء": "حوامل" } },
+            { name: "كفر أبو زهرة", address: "بنها", map: "https://maps.app.goo.gl/BLPPd2suYwgG56Pt5", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الثلاثاء": "درن", "الأربعاء": "حوامل" } },
+            { name: "كفر الحمام", address: "بنها", map: "https://maps.app.goo.gl/iiZMhaTWgRBhB2Hp8", sessions: { "السبت": "صفرية", "الأحد": "درن", "الاثنين": "حوامل", "الثلاثاء": "صفرية", "الأربعاء": "كل الجرعات" } },
+            { name: "كفر الشموت", address: "بنها", map: "https://maps.app.goo.gl/DXhvAddhZ7Y9w9as8", sessions: { "السبت": "درن", "الثلاثاء": "كل الجرعات", "الأربعاء": "حوامل" } },
+            { name: "كفر العرب", address: "بنها", map: "https://maps.app.goo.gl/jSwU2nB1iKwdafG58", sessions: { "السبت": "درن", "الاثنين": "كل الجرعات", "الثلاثاء": "صفرية", "الأربعاء": "حوامل" } },
+            { name: "كفر طحلة", address: "بنها", map: "https://maps.app.goo.gl/rrNpALDL5PjDuA558", sessions: { "السبت": "كل الجرعات", "الاثنين": "كل الجرعات", "الثلاثاء": "حوامل" } },
+            { name: "كفر عطا الله", address: "بنها", map: "https://maps.app.goo.gl/vRJfyBXW5WPMggrB9", sessions: { "السبت": "درن", "الثلاثاء": "درن" } },
+            { name: "مجول", address: "مجول", map: "https://maps.app.goo.gl/pWMb2B1krSwR8Uwk9", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الاثنين": "صفرية", "الثلاثاء": "درن", "الأربعاء": "حوامل", "الخميس": "صفرية" } },
+            { name: "مرصفا", address: "مرصفا", map: "https://maps.app.goo.gl/etHHwRdsbEn7AQpSA", sessions: { "السبت": "كل الجرعات", "الاثنين": "كل الجرعات", "الثلاثاء": "درن", "الأربعاء": "كل الجرعات + حوامل" } },
+            { name: "منشأة بنها", address: "منشأة بنها", map: "https://maps.app.goo.gl/5g51nkGcfSXhmGyX6", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الاثنين": "حوامل", "الثلاثاء": "درن", "الأربعاء": "كل الجرعات" } },
+            { name: "منية السباع", address: "منية السباع", map: "https://maps.app.goo.gl/78GuZ3gYLNWXHB4T9", sessions: { "السبت": "كل الجرعات + درن", "الأحد": "حوامل", "الثلاثاء": "كل الجرعات" } },
+            { name: "ميت الحوفيين", address: "بنها", map: "https://maps.app.goo.gl/BoD65bha6ag2Ycu47", sessions: { "السبت": "درن", "الأحد": "حوامل", "الثلاثاء": "كل الجرعات" } },
+            { name: "ميت العطار", address: "ميت العطار", map: "https://maps.app.goo.gl/ayhXtZQRh2i1rXWAA", sessions: { "السبت": "حوامل", "الاثنين": "درن", "الثلاثاء": "كل الجرعات", "الأربعاء": "9 شهور - سنة - سنة ونصف" } },
+            { name: "ميت راضي", address: "بنها", map: "https://maps.app.goo.gl/Gqy2XrxzzAkqiyhx8", sessions: { "السبت": "صفرية", "الأحد": "كل الجرعات", "الثلاثاء": "درن", "الأربعاء": "حوامل" } },
+            { name: "ميت عاصم", address: "بنها", map: "https://maps.app.goo.gl/BDgXdEcbZpahy9yy8", sessions: { "السبت": "صفرية + حوامل", "الأحد": "كل الجرعات", "الثلاثاء": "درن", "الأربعاء": "كل الجرعات" } },
+            { name: "نقباس", address: "نقباس", map: "https://maps.app.goo.gl/s7VA1EkMkxAJhQEv6", sessions: { "السبت": "صفرية", "الأحد": "حوامل", "الثلاثاء": "كل الجرعات", "الأربعاء": "درن" } },
+            { name: "ورورة", address: "ورورة", map: "https://maps.app.goo.gl/TXnk6Yxw78mMDKAm7", sessions: { "السبت": "كل الجرعات", "الأحد": "درن", "الثلاثاء": "كل الجرعات", "الأربعاء": "حوامل" } },
+            { name: "رعاية 1 بنها", address: "خلف عمر أفندي", map: "https://maps.app.goo.gl/S89JZugxbCpfdonYA", sessions: { "الاثنين": "حوامل", "الأربعاء": "حوامل" } },
+            { name: "رعاية 2 بنها", address: "بنها الجديدة", map: "https://maps.app.goo.gl/cVZ5mRNGXikvMUgr9", sessions: { "الخميس": "حوامل" } }
+        ];
+
+        let activeDay = "الكل";
+
+        function showSection(id) {
+            document.querySelectorAll('.hidden-section').forEach(s => s.style.display = 'none');
+            const section = document.getElementById(id);
+            if(section) {
+                section.style.display = 'block';
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function hideAllSections() {
+            document.querySelectorAll('.hidden-section').forEach(s => s.style.display = 'none');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('ageSelector').onchange = function() {
+            const val = this.value;
+            const vaccineList = document.getElementById('vaccineList');
+            const results = document.getElementById('results');
+            vaccineList.innerHTML = "";
+            if (vaccineData[val]) {
+                vaccineData[val].forEach(v => {
+                    vaccineList.innerHTML += `<span class="bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-sm">💉 ${v}</span>`;
+                });
+                results.classList.remove('hidden');
+            } else {
+                results.classList.add('hidden');
+            }
+        };
+
+        function updateDisplay() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const container = document.getElementById('unitsContainer');
+            const filtered = units.filter(u => {
+                const nameMatch = u.name.toLowerCase().includes(searchTerm);
+                const dayMatch = activeDay === "الكل" || u.sessions[activeDay];
+                return nameMatch && dayMatch;
+            });
+
+            container.innerHTML = "";
+            filtered.forEach(u => {
+                let sessionInfo = activeDay === "الكل" ? 
+                    `<p class="text-[10px] text-slate-400 mt-1">توجد جلسات دورية.</p>` : 
+                    `<div class="mt-2 bg-blue-50 p-2 rounded-lg"><p class="text-[10px] text-blue-700 font-black">جلسة ${activeDay}: ${u.sessions[activeDay]}</p></div>`;
+
+                container.innerHTML += `
+                    <div class="unit-card bg-white p-4 shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-start">
+                            <span class="text-blue-500"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/></svg></span>
+                            <div class="text-right">
+                                <h4 class="font-black text-slate-800 text-sm">${u.name}</h4>
+                                <p class="text-[9px] text-slate-400 font-bold">${u.address}</p>
+                            </div>
+                        </div>
+                        ${sessionInfo}
+                        <a href="${u.map}" target="_blank" class="block w-full mt-3 py-1.5 bg-slate-50 text-slate-400 text-center rounded-lg text-[10px] font-black hover:bg-blue-600 hover:text-white transition-all">الخريطة</a>
+                    </div>
+                `;
+            });
+        }
+
+        document.querySelectorAll('.day-btn').forEach(btn => {
+            btn.onclick = function() {
+                document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeDay = this.getAttribute('data-day');
+                updateDisplay();
+            };
+        });
+
+        document.getElementById('search').oninput = updateDisplay;
+        updateDisplay();
+    </script>
+</body>
+</html>
